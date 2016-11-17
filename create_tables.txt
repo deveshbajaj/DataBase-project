@@ -1,0 +1,213 @@
+create database wholesale_management_system
+use wholesale_management_system;
+
+CREATE TABLE customer
+(
+custmer_id int NOT NULL,
+Name varchar(255) NOT NULL,
+email varchar(255),
+mobile_no int(10),
+CONSTRAINT pk_custmer_id  PRIMARY KEY (custmer_id )
+);
+
+CREATE TABLE customer_adress
+(
+custmer_id int,
+street varchar(255),
+city  varchar(255),
+pincode int(6),
+CONSTRAINT fk_custmer_id  FOREIGN KEY (custmer_id ) REFERENCES customer(custmer_id )
+);
+
+CREATE TABLE payment
+(
+custmeer_id int,
+payment_id int  NOT NULL,
+amount int ,
+method varchar(6),
+CONSTRAINT pk_payment_id  PRIMARY KEY (payment_id ),
+CONSTRAINT fk_custmeer_id  FOREIGN KEY (custmeer_id ) REFERENCES customer(custmer_id )
+);
+
+CREATE TABLE payment_slip
+(
+payment_id int,
+amount_payed int NOT NULL,
+due_date date,
+intrest int(3),
+CONSTRAINT fk_payment_id   FOREIGN KEY (payment_id ) REFERENCES payment (payment_id  )
+);
+
+
+
+CREATE TABLE employee
+(
+employee_id int NOT NULL,
+Name varchar(255) NOT NULL,
+join_date  date,
+mobile_no int(10),
+salary  int(10)
+);
+
+CREATE TABLE buys
+(
+no_product int
+);
+
+CREATE TABLE product
+(
+product_id int NOT NULL,
+Name varchar(255) NOT NULL,
+store_loc  int(10),
+avl_quantity  int(10),
+CONSTRAINT pk_product_id  PRIMARY KEY (product_id )
+);
+
+CREATE TABLE stock
+(
+avl_quantity_godown  int(10),
+quantity_to_order int(10),
+model_no int(10)
+);
+
+CREATE TABLE wholesaler
+(
+wholesaler_id int NOT NULL,
+Name varchar(255) NOT NULL,
+product_id int ,
+netprice  int(10),
+profit int(3),
+CONSTRAINT pk_wholesaler_id  PRIMARY KEY (wholesaler_id )
+);
+
+
+ALTER TABLE stock add  product_id int(11)
+
+UPDATE employee  SET   name=" xxx "   WHERE    name=" naruto ";
+
+UPDATE employee  SET   name ="james"   WHERE   name ="naruto";
+
+
+
+
+
+
++---------------------------------------+
+| Tables_in_wholesale_management_system |
++---------------------------------------+
+| buys                                  |
+| customer                              |
+| customer_adress                       |
+| employee                              |
+| payment                               |
+| payment_slip                          |
+| product                               |
+| stock                                 |
+| wholesaler                            |
++---------------------------------------+
+9 rows in set (0.03 sec)
+
+mysql> desc buys;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| no_product | int(11) | YES  |     | NULL    |       |
++------------+---------+------+-----+---------+-------+
+1 row in set (0.69 sec)
+
+mysql> desc customer;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| custmer_id | int(11)      | NO   | PRI | NULL    |       |
+| Name       | varchar(255) | NO   |     | NULL    |       |
+| email      | varchar(255) | YES  |     | NULL    |       |
+| mobile_no  | int(10)      | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> desc customer_adress;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| custmer_id | int(11)      | YES  | MUL | NULL    |       |
+| street     | varchar(255) | YES  |     | NULL    |       |
+| city       | varchar(255) | YES  |     | NULL    |       |
+| pincode    | int(6)       | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+4 rows in set (0.04 sec)
+
+mysql> desc employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| employee_id | int(11)      | NO   |     | NULL    |       |
+| Name        | varchar(255) | NO   |     | NULL    |       |
+| join_date   | date         | YES  |     | NULL    |       |
+| mobile_no   | int(10)      | YES  |     | NULL    |       |
+| salary      | int(10)      | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.06 sec)
+
+mysql> desc payment;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| custmeer_id | int(11)    | YES  | MUL | NULL    |       |
+| payment_id  | int(11)    | NO   | PRI | NULL    |       |
+| amount      | int(11)    | YES  |     | NULL    |       |
+| method      | varchar(6) | YES  |     | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> desc paument_slip;
+ERROR 1146 (42S02): Table 'wholesale_management_system.paument_slip' d
+st
+mysql> desc payment_slip;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| payment_id   | int(11) | YES  | MUL | NULL    |       |
+| amount_payed | int(11) | NO   |     | NULL    |       |
+| due_date     | date    | YES  |     | NULL    |       |
+| intrest      | int(3)  | YES  |     | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+4 rows in set (0.24 sec)
+
+mysql> desc product;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| product_id   | int(11)      | NO   | PRI | NULL    |       |
+| Name         | varchar(255) | NO   |     | NULL    |       |
+| store_loc    | int(10)      | YES  |     | NULL    |       |
+| avl_quantity | int(10)      | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc stock;
++---------------------+---------+------+-----+---------+-------+
+| Field               | Type    | Null | Key | Default | Extra |
++---------------------+---------+------+-----+---------+-------+
+| avl_quantity_godown | int(10) | YES  |     | NULL    |       |
+| quantity_to_order   | int(10) | YES  |     | NULL    |       |
+| model_no            | int(10) | YES  |     | NULL    |       |
+| product_id          | int(11) | YES  |     | NULL    |       |
++---------------------+---------+------+-----+---------+-------+
+4 rows in set (0.04 sec)
+
+mysql> desc wholesaler;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| wholesaler_id | int(11)      | NO   | PRI | NULL    |       |
+| Name          | varchar(255) | NO   |     | NULL    |       |
+| product_id    | int(11)      | YES  |     | NULL    |       |
+| netprice      | int(10)      | YES  |     | NULL    |       |
+| profit        | int(3)       | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+

@@ -1,0 +1,35 @@
+
+
+
+//wholesaler
+INSERT INTO wholesaler  VALUES (90001,' honey  ',2001,20101,30);
+INSERT INTO wholesaler  VALUES (90002,' raj  ',2002,20102,40);
+INSERT INTO wholesaler  VALUES (90003,' jerry  ',2003,20103,50);
+
+//stock
+INSERT INTO stock  VALUES (50,10,501,2001);
+INSERT INTO stock  VALUES (60,11,502,2002);
+INSERT INTO stock  VALUES (20,12,503,2003);
+//payment
+INSERT INTO payment VALUES (10001,10101,500,'debit');
+INSERT INTO payment VALUES (10002,10102,6000,'debit');
+//customer adress
+INSERT INTO customer_adress VALUES (10001,' street  1',' pulgaon ',63201);
+INSERT INTO customer_adress VALUES (10002,' street  2','  nagpur  ',53101);
+INSERT INTO customer_adress VALUES (10003,' street  3',' wardha ',59201);
+
+//employee
+INSERT INTO employee  VALUES (20001,'saritha','1997-02-25',12564789,25000);
+INSERT INTO employee  VALUES (20002,'murgan','1998-03-26',84535789,15000);
+INSERT INTO employee  VALUES (20003,' vansh','1999-03-27',94564789,35000);
+INSERT INTO employee  VALUES (20004,'santi','1996-02-25',98564789,5000);
+//PRODUCT
+INSERT INTO product  VALUES (2001,'action',3001,20);
+INSERT INTO product  VALUES (2002,'paragon',3002,50);
+INSERT INTO product  VALUES (2003,'BATA',3003,40);
+INSERT INTO product  VALUES (2004,'REEBOK',3004,30);
+//custmer
+INSERT INTO customer VALUES (10004,'pinki','pinki856@gmail.com',85525624);
+INSERT INTO customer VALUES (10003,'shivam','shivam856@gmail.com',856425624);
+INSERT INTO customer VALUES (10002,'yash','yashdeep54@gmail.com',823725078);
+INSERT INTO customer VALUES (10001,'devesh','deveshbajaj59@gmail.com',979054558);
